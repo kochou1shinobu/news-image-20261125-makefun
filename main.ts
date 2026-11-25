@@ -1,29 +1,36 @@
-// news-image-20261125 entry: "Sum up 25 November's world news in one image."
+// Entry for the news-image-20261125 bounty:
+// "Sum up 25 November's world news in one image."
 //
-// The image itself (entry.png, held in this repository) is a one-page
-// newspaper front page composed from the day's verified headlines of
-// Wednesday 25 November 2026: the US proposing new tariffs on 14 trading
-// partners, oil tankers hitting mines in the Strait of Hormuz, the Asian
-// tech rout (KOSPI -6.2%), Ukrainian drones hitting two Rosneft refineries,
-// Huawei's conviction in Brooklyn, the Houthis' claim on Saudi Arabia's
-// biggest refinery, and Shenzhou-24 carrying Pakistan's first astronaut to
-// Tiangong. poster.html is the source the PNG was rendered from (headless
-// Chrome, 1024x1024).
+// What this program does is deliberately tiny. The entry is the picture
+// itself — entry.png, a one-page newspaper front page for Wednesday
+// 25 November 2026, built from that day's verified headlines. The lead
+// story is Washington proposing new tariffs on 14 trading partners; the
+// six stories below it cover tankers hitting mines in the Strait of
+// Hormuz, the Asian tech rout, Ukrainian drones hitting two Rosneft
+// refineries, Huawei's conviction in Brooklyn, the Houthis' claim on
+// Saudi Arabia's biggest refinery, and Shenzhou-24 carrying Pakistan's
+// first astronaut to Tiangong. poster.html is the source the picture
+// was rendered from (headless Chrome at 1024x1024), kept in the repo
+// so anyone can see how the front page was composed.
 //
-// The program's whole job, per the brief, is to write that image to the
-// output directory as entry.png — the same bytes on every run, no network.
+// Running this program writes that same picture, byte for byte, to the
+// output directory as entry.png. It reads nothing from the network and
+// its output never changes between runs.
 import { copyFileSync, mkdirSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
-const here = dirname(fileURLToPath(import.meta.url));
+const root = dirname(fileURLToPath(import.meta.url));
 
-function arg(name: string): string | null {
-  const i = process.argv.indexOf("--" + name);
-  return i >= 0 && i + 1 < process.argv.length ? process.argv[i + 1] : null;
+function flagValue(name: string): string | undefined {
+  const at = process.argv.indexOf(`--${name}`);
+  return at === -1 ? undefined : process.argv[at + 1];
 }
 
-const outDir = resolve(arg("output") ?? process.env.MAKEFUN_OUTPUT_DIR ?? "/output");
-mkdirSync(outDir, { recursive: true });
-copyFileSync(resolve(here, "entry.png"), resolve(outDir, "entry.png"));
-console.log(`news image: wrote ${resolve(outDir, "entry.png")}`);
+const destination = resolve(
+  flagValue("output") ?? process.env.MAKEFUN_OUTPUT_DIR ?? "/output",
+);
+
+mkdirSync(destination, { recursive: true });
+copyFileSync(resolve(root, "entry.png"), resolve(destination, "entry.png"));
+console.log(`wrote entry.png to ${destination}`);

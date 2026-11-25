@@ -2,167 +2,214 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<title>The World Today — 25 November 2026</title>
 <style>
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { width:1024px; height:1024px; font-family: Georgia, 'Times New Roman', serif; background:#f7f3ea; color:#141414; overflow:hidden; }
-  .frame { width:1024px; height:1024px; padding:30px 34px 24px; display:flex; flex-direction:column; }
-  .rule-top { border-top:6px solid #141414; border-bottom:2px solid #141414; height:12px; margin-bottom:10px; }
-  .masthead { text-align:center; }
-  .masthead .kicker { font-family: Helvetica, Arial, sans-serif; font-size:19px; letter-spacing:6px; text-transform:uppercase; color:#8a6d1f; }
-  .masthead h1 { font-size:57px; letter-spacing:1px; margin:2px 0 0; font-weight:900; }
-  .masthead .date { font-family: Helvetica, Arial, sans-serif; font-size:21px; margin-top:4px; color:#333; }
-  .masthead .date b { color:#b3001b; }
-  .rule-mid { border-bottom:3px solid #141414; margin:12px 0 14px; }
-  .hero { display:flex; gap:18px; background:#101418; color:#f5f1e6; padding:15px 20px 13px; border-radius:6px; }
-  .hero .txt { flex:1.25; }
-  .hero .tag { font-family: Helvetica, Arial, sans-serif; font-size:15px; letter-spacing:3px; color:#ffd34d; text-transform:uppercase; }
-  .hero h2 { font-size:40px; line-height:1.08; margin:6px 0 8px; font-weight:900; }
-  .hero p { font-size:18.5px; line-height:1.32; color:#d8d2c2; }
-  .hero .art { flex:1; display:flex; align-items:center; justify-content:center; }
-  .grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin-top:12px; flex:1; }
-  .card { border:2px solid #141414; border-radius:6px; padding:10px 13px 8px; background:#fffdf6; display:flex; flex-direction:column; }
-  .card .art { height:64px; display:flex; align-items:center; justify-content:center; margin-bottom:4px; }
-  .card .art svg { height:64px; width:auto; max-width:100%; }
-  .card h3 { font-size:20.5px; line-height:1.12; font-weight:900; }
-  .card p { font-size:15px; line-height:1.28; color:#3a3a3a; margin-top:4px; font-family: Helvetica, Arial, sans-serif; }
-  .card .tag { font-family: Helvetica, Arial, sans-serif; font-size:12.5px; letter-spacing:2px; text-transform:uppercase; color:#b3001b; margin-bottom:2px; }
-  .strip { margin-top:10px; border-top:3px solid #141414; padding-top:8px; font-family: Helvetica, Arial, sans-serif; font-size:15px; display:flex; justify-content:space-between; color:#222; }
-  .strip b { color:#b3001b; }
+  * { box-sizing: border-box; }
+  :root {
+    --ink: #191512;
+    --paper: #f6f1e5;
+    --card: #fffdf4;
+    --red: #a3121f;
+    --gold: #8a6d1f;
+    --navy: #101820;
+    --blue: #256b9e;
+    --muted: #44403a;
+  }
+  html, body { margin: 0; padding: 0; }
+  body {
+    width: 1024px; height: 1024px;
+    background: var(--paper); color: var(--ink);
+    font-family: Georgia, 'Times New Roman', serif;
+    overflow: hidden;
+  }
+  .page { height: 1024px; padding: 20px 32px 14px; display: flex; flex-direction: column; }
+  .topline { border-top: 7px solid var(--ink); border-bottom: 2px solid var(--ink); padding-top: 4px; }
+  header.nameplate { text-align: center; padding-top: 12px; }
+  .nameplate .eyebrow {
+    font-family: Arial, Helvetica, sans-serif; font-size: 18px;
+    letter-spacing: 7px; text-transform: uppercase; color: var(--gold);
+  }
+  .nameplate h1 { font-size: 60px; font-weight: 900; letter-spacing: 2px; margin: 4px 0 0; }
+  .nameplate .dateline {
+    font-family: Arial, Helvetica, sans-serif; font-size: 20px; margin-top: 6px; color: var(--muted);
+  }
+  .nameplate .dateline strong { color: var(--red); }
+  .divider { border: none; border-top: 3px solid var(--ink); margin: 12px 0 14px; }
+
+  section.lead {
+    background: var(--navy); color: #f3efe2; border-radius: 8px;
+    padding: 12px 20px 11px; display: flex; gap: 20px;
+  }
+  .lead .copy { flex: 1.3; }
+  .lead .eyebrow {
+    font-family: Arial, Helvetica, sans-serif; font-size: 14px;
+    letter-spacing: 3px; text-transform: uppercase; color: #ffd34d;
+  }
+  .lead h2 { font-size: 35px; line-height: 1.08; font-weight: 900; margin: 6px 0 7px; }
+  .lead p { font-size: 18px; line-height: 1.35; color: #d6d0bf; margin: 0; }
+  .lead .figure { flex: 1; display: flex; align-items: center; justify-content: center; }
+
+  main.stories {
+    flex: 1; display: grid; margin-top: 11px;
+    grid-template-columns: repeat(3, 1fr); grid-template-rows: 1fr 1fr; gap: 11px;
+  }
+  article.story {
+    border: 2px solid var(--ink); border-radius: 7px; background: var(--card);
+    padding: 9px 13px 8px; display: flex; flex-direction: column;
+  }
+  .story .eyebrow {
+    font-family: Arial, Helvetica, sans-serif; font-size: 12px;
+    letter-spacing: 2px; text-transform: uppercase; color: var(--red); margin-bottom: 3px;
+  }
+  .story .figure { height: 62px; display: flex; align-items: center; justify-content: center; }
+  .story .figure svg { height: 62px; width: auto; max-width: 100%; }
+  .story h3 { font-size: 20px; line-height: 1.15; font-weight: 900; margin: 4px 0 0; }
+  .story p {
+    font-family: Arial, Helvetica, sans-serif; font-size: 14.5px;
+    line-height: 1.3; color: var(--muted); margin: 5px 0 0;
+  }
+
+  footer.foot {
+    margin-top: 9px; border-top: 3px solid var(--ink); padding-top: 8px;
+    display: flex; justify-content: space-between;
+    font-family: Arial, Helvetica, sans-serif; font-size: 15px; color: #26221e;
+  }
+  footer.foot strong { color: var(--red); }
 </style>
 </head>
 <body>
-<div class="frame">
-  <div class="rule-top"></div>
-  <div class="masthead">
-    <div class="kicker">The day in one picture</div>
+<div class="page">
+  <div class="topline"></div>
+  <header class="nameplate">
+    <div class="eyebrow">The day in one picture</div>
     <h1>THE WORLD TODAY</h1>
-    <div class="date">Wednesday <b>25 November 2026</b> · Tariffs, mines and a market rout</div>
-  </div>
-  <div class="rule-mid"></div>
+    <div class="dateline">Wednesday <strong>25 November 2026</strong> &middot; Tariffs, mines and a market rout</div>
+  </header>
+  <hr class="divider">
 
-  <div class="hero">
-    <div class="txt">
-      <div class="tag">Story of the day · Trade</div>
+  <section class="lead">
+    <div class="copy">
+      <div class="eyebrow">Story of the day &middot; Trade</div>
       <h2>US UNVEILS NEW TARIFFS ON 14 PARTNERS</h2>
-      <p>Washington proposes sweeping duties on China, the EU, India and eleven others — headline rates of 20 to 40 percent — and Wall Street slides as tariff and AI-spending fears collide.</p>
+      <p>Washington proposes sweeping duties on China, the EU, India and eleven others &mdash; headline rates of 20 to 40 percent &mdash; and Wall Street slides as tariff and AI-spending fears collide.</p>
     </div>
-    <div class="art">
-      <svg width="300" height="170" viewBox="0 0 300 170">
-        <rect x="20" y="96" width="34" height="58" fill="#ffd34d"/>
-        <rect x="66" y="72" width="34" height="82" fill="#ffd34d"/>
-        <rect x="112" y="48" width="34" height="106" fill="#ffd34d"/>
-        <rect x="158" y="80" width="34" height="74" fill="#b3001b"/>
-        <rect x="204" y="104" width="34" height="50" fill="#b3001b"/>
-        <rect x="250" y="122" width="34" height="32" fill="#b3001b"/>
-        <polyline points="30,90 80,66 128,42 172,74 218,98 264,116" fill="none" stroke="#f5f1e6" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
-        <text x="150" y="26" text-anchor="middle" font-family="Helvetica, Arial" font-size="24" font-weight="bold" fill="#f5f1e6">20–40%</text>
+    <div class="figure">
+      <svg width="290" height="165" viewBox="0 0 290 165">
+        <rect x="18" y="94" width="32" height="56" fill="#ffd34d"/>
+        <rect x="62" y="70" width="32" height="80" fill="#ffd34d"/>
+        <rect x="106" y="46" width="32" height="104" fill="#ffd34d"/>
+        <rect x="150" y="78" width="32" height="72" fill="#a3121f"/>
+        <rect x="194" y="100" width="32" height="50" fill="#a3121f"/>
+        <rect x="238" y="118" width="32" height="32" fill="#a3121f"/>
+        <polyline points="28,88 76,64 120,40 164,72 208,94 252,112" fill="none" stroke="#f3efe2" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+        <text x="145" y="24" text-anchor="middle" font-family="Arial, Helvetica" font-size="23" font-weight="bold" fill="#f3efe2">20&ndash;40%</text>
       </svg>
     </div>
-  </div>
+  </section>
 
-  <div class="grid">
-    <div class="card">
-      <div class="tag">Middle East · Hormuz</div>
-      <div class="art">
-        <svg width="200" height="104" viewBox="0 0 200 104">
-          <path d="M10 84 Q 35 74, 60 84 T 110 84 T 160 84 T 210 84" fill="none" stroke="#2470a0" stroke-width="5"/>
-          <path d="M52 62 L150 62 L140 82 L62 82 Z" fill="#3a3a3a"/>
-          <rect x="88" y="46" width="26" height="16" fill="#3a3a3a"/>
-          <circle cx="168" cy="52" r="11" fill="#f2a007"/>
-          <path d="M168 38 v-8 M160 34 l6 -6 M176 34 l-6 -6" stroke="#b3001b" stroke-width="4" fill="none"/>
-          <circle cx="34" cy="26" r="7" fill="#b3001b"/>
-          <path d="M34 36 v10 M26 42 h16" stroke="#b3001b" stroke-width="4"/>
+  <main class="stories">
+    <article class="story">
+      <div class="eyebrow">Middle East &middot; Hormuz</div>
+      <div class="figure">
+        <svg width="190" height="100" viewBox="0 0 190 100">
+          <path d="M8 80 Q 32 71, 56 80 T 104 80 T 152 80 T 200 80" fill="none" stroke="#256b9e" stroke-width="5"/>
+          <path d="M48 60 L142 60 L132 78 L58 78 Z" fill="#3a3a3a"/>
+          <rect x="82" y="44" width="24" height="16" fill="#3a3a3a"/>
+          <circle cx="160" cy="50" r="10" fill="#f2a007"/>
+          <path d="M160 36 v-8 M152 32 l6 -6 M168 32 l-6 -6" stroke="#a3121f" stroke-width="4" fill="none"/>
+          <circle cx="32" cy="24" r="7" fill="#a3121f"/>
+          <path d="M32 34 v10 M24 40 h16" stroke="#a3121f" stroke-width="4"/>
         </svg>
       </div>
       <h3>Tankers hit mines in the Strait of Hormuz</h3>
       <p>Iran says oil tankers struck naval mines and caught fire in the strait, as Washington weighs new options in its confrontation with Tehran.</p>
-    </div>
+    </article>
 
-    <div class="card">
-      <div class="tag">Markets · Asia</div>
-      <div class="art">
-        <svg width="200" height="104" viewBox="0 0 200 104">
-          <polyline points="8,22 55,34 100,30 145,62 190,88" fill="none" stroke="#b3001b" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
-          <polygon points="190,88 166,84 182,64" fill="#b3001b"/>
-          <text x="14" y="98" font-family="Helvetica, Arial" font-size="17" font-weight="bold" fill="#b3001b">KOSPI −6.2%</text>
-          <text x="196" y="16" text-anchor="end" font-family="Helvetica, Arial" font-size="14" font-weight="bold" fill="#3a3a3a">Nikkei −2.8%</text>
+    <article class="story">
+      <div class="eyebrow">Markets &middot; Asia</div>
+      <div class="figure">
+        <svg width="190" height="100" viewBox="0 0 190 100">
+          <polyline points="8,20 52,32 96,28 138,58 182,84" fill="none" stroke="#a3121f" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+          <polygon points="182,84 158,80 174,60" fill="#a3121f"/>
+          <text x="12" y="94" font-family="Arial, Helvetica" font-size="16" font-weight="bold" fill="#a3121f">KOSPI &minus;6.2%</text>
+          <text x="186" y="14" text-anchor="end" font-family="Arial, Helvetica" font-size="13" font-weight="bold" fill="#44403a">Nikkei &minus;2.8%</text>
         </svg>
       </div>
       <h3>Asian tech shares tumble as AI rally reverses</h3>
-      <p>South Korea's KOSPI plunges 6.2% with Samsung down 9.9%; Nvidia's comeback rally fades and the Nasdaq slides on AI-spending doubts.</p>
-    </div>
+      <p>South Korea&rsquo;s KOSPI plunges 6.2% with Samsung down 9.9%; Nvidia&rsquo;s comeback rally fades and the Nasdaq slides on AI-spending doubts.</p>
+    </article>
 
-    <div class="card">
-      <div class="tag">Russia-Ukraine war</div>
-      <div class="art">
-        <svg width="200" height="104" viewBox="0 0 200 104">
-          <rect x="52" y="30" width="96" height="62" fill="#a39a89"/>
-          <rect x="64" y="42" width="14" height="14" fill="#f7f3ea"/>
-          <rect x="88" y="42" width="14" height="14" fill="#f7f3ea"/>
-          <rect x="112" y="42" width="14" height="14" fill="#f7f3ea"/>
-          <rect x="64" y="64" width="14" height="14" fill="#f7f3ea"/>
-          <rect x="112" y="64" width="14" height="14" fill="#3a3a3a"/>
-          <path d="M96 8 L118 30 L84 26 L96 34 L78 30 Z" fill="#f2a007"/>
-          <path d="M20 92 h160" stroke="#141414" stroke-width="4"/>
+    <article class="story">
+      <div class="eyebrow">Russia-Ukraine war</div>
+      <div class="figure">
+        <svg width="190" height="100" viewBox="0 0 190 100">
+          <rect x="48" y="28" width="92" height="60" fill="#a39a89"/>
+          <rect x="60" y="40" width="13" height="13" fill="#f6f1e5"/>
+          <rect x="84" y="40" width="13" height="13" fill="#f6f1e5"/>
+          <rect x="108" y="40" width="13" height="13" fill="#f6f1e5"/>
+          <rect x="60" y="62" width="13" height="13" fill="#f6f1e5"/>
+          <rect x="108" y="62" width="13" height="13" fill="#3a3a3a"/>
+          <path d="M92 8 L112 28 L80 24 L92 32 L74 28 Z" fill="#f2a007"/>
+          <path d="M18 88 h154" stroke="#191512" stroke-width="4"/>
         </svg>
       </div>
       <h3>Ukraine hits two refineries; Putin vows revenge</h3>
-      <p>Ukrainian drones set two Rosneft refineries ablaze in Samara. Putin says Kyiv ignored Trump's plea to stop striking oil plants.</p>
-    </div>
+      <p>Ukrainian drones set two Rosneft refineries ablaze in Samara. Putin says Kyiv ignored Trump&rsquo;s plea to stop striking oil plants.</p>
+    </article>
 
-    <div class="card">
-      <div class="tag">Tech · US courts</div>
-      <div class="art">
-        <svg width="200" height="104" viewBox="0 0 200 104">
-          <path d="M100 14 L132 88 L68 88 Z" fill="none" stroke="#141414" stroke-width="4" stroke-linejoin="round"/>
-          <path d="M100 34 v26" stroke="#b3001b" stroke-width="5" stroke-linecap="round"/>
-          <circle cx="100" cy="74" r="4" fill="#b3001b"/>
-          <path d="M30 88 h140" stroke="#141414" stroke-width="4"/>
-          <text x="100" y="102" text-anchor="middle" font-family="Helvetica, Arial" font-size="12" font-weight="bold" fill="#b3001b">GUILTY · 10 OF 12 COUNTS</text>
+    <article class="story">
+      <div class="eyebrow">Tech &middot; US courts</div>
+      <div class="figure">
+        <svg width="190" height="100" viewBox="0 0 190 100">
+          <path d="M95 12 L126 84 L64 84 Z" fill="none" stroke="#191512" stroke-width="4" stroke-linejoin="round"/>
+          <path d="M95 32 v24" stroke="#a3121f" stroke-width="5" stroke-linecap="round"/>
+          <circle cx="95" cy="70" r="4" fill="#a3121f"/>
+          <path d="M28 84 h134" stroke="#191512" stroke-width="4"/>
+          <text x="95" y="98" text-anchor="middle" font-family="Arial, Helvetica" font-size="11" font-weight="bold" fill="#a3121f">GUILTY &middot; 10 OF 12 COUNTS</text>
         </svg>
       </div>
       <h3>Huawei convicted in Brooklyn fraud trial</h3>
       <p>A jury finds the Chinese tech giant guilty of bank fraud, sanctions violations and stealing trade secrets after a two-month trial.</p>
-    </div>
+    </article>
 
-    <div class="card">
-      <div class="tag">Gulf · Saudi Arabia</div>
-      <div class="art">
-        <svg width="200" height="104" viewBox="0 0 200 104">
-          <rect x="52" y="34" width="22" height="56" fill="#8a8378"/>
-          <rect x="86" y="20" width="26" height="70" fill="#6e675c"/>
-          <rect x="122" y="44" width="20" height="46" fill="#8a8378"/>
-          <path d="M86 20 l18 -12 l6 10 l12 -6" fill="none" stroke="#b3001b" stroke-width="4"/>
-          <circle cx="168" cy="26" r="9" fill="#f2a007"/>
-          <path d="M168 40 v14 M150 48 h20" stroke="#f2a007" stroke-width="4"/>
-          <path d="M20 92 h160" stroke="#141414" stroke-width="4"/>
+    <article class="story">
+      <div class="eyebrow">Gulf &middot; Saudi Arabia</div>
+      <div class="figure">
+        <svg width="190" height="100" viewBox="0 0 190 100">
+          <rect x="48" y="32" width="21" height="54" fill="#8a8378"/>
+          <rect x="81" y="18" width="25" height="68" fill="#6e675c"/>
+          <rect x="116" y="42" width="19" height="44" fill="#8a8378"/>
+          <path d="M81 18 l17 -11 l6 9 l11 -5" fill="none" stroke="#a3121f" stroke-width="4"/>
+          <circle cx="160" cy="24" r="9" fill="#f2a007"/>
+          <path d="M160 38 v13 M150 46 h20" stroke="#f2a007" stroke-width="4"/>
+          <path d="M18 88 h154" stroke="#191512" stroke-width="4"/>
         </svg>
       </div>
-      <h3>Houthis say they hit Saudi Arabia's biggest refinery</h3>
+      <h3>Houthis say they hit Saudi Arabia&rsquo;s biggest refinery</h3>
       <p>The claim follows a drone strike on a Riyadh tower that injured 11 people, as the Saudi-led coalition hits Hodeidah port in reply.</p>
-    </div>
+    </article>
 
-    <div class="card">
-      <div class="tag">Space</div>
-      <div class="art">
-        <svg width="200" height="104" viewBox="0 0 200 104">
-          <circle cx="100" cy="52" r="34" fill="none" stroke="#2470a0" stroke-width="4"/>
-          <path d="M72 40 q28 14 56 2 M70 62 q30 -12 60 2" fill="none" stroke="#2470a0" stroke-width="3"/>
-          <path d="M100 86 v-16 M92 74 l8 -8 8 8" stroke="#b3001b" stroke-width="4" fill="none"/>
-          <path d="M58 30 l10 -8 M150 76 l-10 8" stroke="#2470a0" stroke-width="3" stroke-linecap="round"/>
-          <text x="100" y="102" text-anchor="middle" font-family="Helvetica, Arial" font-size="12" font-weight="bold" fill="#2470a0">SHENZHOU-24 · TIANGONG</text>
+    <article class="story">
+      <div class="eyebrow">Space</div>
+      <div class="figure">
+        <svg width="190" height="100" viewBox="0 0 190 100">
+          <circle cx="95" cy="50" r="32" fill="none" stroke="#256b9e" stroke-width="4"/>
+          <path d="M68 38 q27 14 54 2 M66 60 q29 -12 58 2" fill="none" stroke="#256b9e" stroke-width="3"/>
+          <path d="M95 82 v-15 M87 70 l8 -8 8 8" stroke="#a3121f" stroke-width="4" fill="none"/>
+          <path d="M54 28 l10 -8 M144 72 l-10 8" stroke="#256b9e" stroke-width="3" stroke-linecap="round"/>
+          <text x="95" y="98" text-anchor="middle" font-family="Arial, Helvetica" font-size="11" font-weight="bold" fill="#256b9e">SHENZHOU-24 &middot; TIANGONG</text>
         </svg>
       </div>
-      <h3>Pakistan's first astronaut reaches China's station</h3>
-      <p>Shenzhou-24 docks with Tiangong carrying Muhammad Zeeshan Ali — the first foreign astronaut to fly on China's space station.</p>
-    </div>
-  </div>
+      <h3>Pakistan&rsquo;s first astronaut reaches China&rsquo;s station</h3>
+      <p>Shenzhou-24 docks with Tiangong carrying Muhammad Zeeshan Ali &mdash; the first foreign astronaut to fly on China&rsquo;s space station.</p>
+    </article>
+  </main>
 
-  <div class="strip">
-    <span><b>Also today:</b> Colombia frees all supermarket hostages</span>
-    <span>Australia–Solomon Islands sign security treaty</span>
+  <footer class="foot">
+    <span><strong>Also today:</strong> Colombia frees all supermarket hostages</span>
+    <span>Australia&ndash;Solomon Islands sign security treaty</span>
     <span>Spain heads to snap election</span>
-  </div>
+  </footer>
 </div>
 </body>
 </html>
